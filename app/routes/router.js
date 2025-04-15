@@ -17,6 +17,12 @@ endpoints.forEach(endpoint => {
     router.use(`/api/${endpoint}`, require(`./api/${endpoint}Routes`))
 })
 
+// heroAside data
+let heroAsideData = []
+
+axios.get(`http://localhost:${port}/api/hero/sort`)
+.then(resp => heroAsideData = resp.data)
+
 
 // 3
 // router.get(path, callback function)
@@ -58,6 +64,40 @@ router.get('/', (req, res)=> {
         })
     })
 
+})
+
+//hero page
+router.get('/heroes', (req, res)=> {
+
+    const url = `http://localhost:${port}/api/hero`
+
+    axios.get(url)
+    .then(resp => {
+        res.render('pages/hero', {
+            title: 'All Heroes',
+            name: 'Heroes',
+            data: resp.data,
+            asideData: heroAsideData
+        })
+    })
+})
+
+// hero single
+router.get('/heroes/:id', (req, res)=> {
+    const id = req.params.id
+    const url = `http://localhost:${port}/api/hero/${id}`
+
+    axios.get(url)
+    .then(resp => {
+
+        let heroName = resp.data.hero_name == null ? `${resp.data.first_name}${resp.data.last_name}` : resp.data.hero_name
+        res.render('pages/heroSingle', {
+            title: heroName,
+            name: heroName,
+            data: resp.data,
+            asideData: heroAsideData
+        })
+    })
 })
 
 // step 1b
