@@ -5,9 +5,9 @@
         <div class="row">
             <div class="col-md-3">
                 <% if (data.alias != null) { %>
-                    <h2 class="hero-single-h2">Alias: <%= data.alias %></h2>
+                    <h2 class="hero-single-h2 text-light">Alias: <%= data.alias %></h2>
                 <% } %>
-                <h2 class="hero-single-h2">Powers</h2>
+                <h2 class="hero-single-h2 text-light">Powers</h2>
                 <ul class="list-group list-group-flush" id="heroPowersLists">
                     <% data.powers.forEach(heroPower => { %>
                         <li class="list-group-item">
