@@ -4,20 +4,21 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <h2>Powers</h2>
-                <ul class="list-group list-group-flush" id="heroPowersList">
-                    <% heroPowers.forEach(heroPower => { %>
-                        <li class="list-group-item heropower-list-item">
-                            <a href="#" class="heropower-link">
-                                <%= heroPower.power %>
-                            </a>
+                <% if (data.alias != null) { %>
+                    <h2 class="hero-single-h2">Alias: <%= data.alias %></h2>
+                <% } %>
+                <h2 class="hero-single-h2">Powers</h2>
+                <ul class="list-group list-group-flush" id="heroPowersLists">
+                    <% data.powers.forEach(heroPower => { %>
+                        <li class="list-group-item">
+                            <%= heroPower %>
                         </li>
                     <% }) %>
                 </ul>
+                
             </div>
             <div class="col-md-7">
-                <img src="https://placehold.co/50x50"alt="placeholder img" class="img-fluid image" />
-                
+                <img src="https://placehold.co/50x50" alt="placeholder img" class="img-fluid image" />
             </div>
             <div class="col-md-2">
                 <%- include('../partials/heroAside') %>
