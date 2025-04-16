@@ -19,9 +19,18 @@ endpoints.forEach(endpoint => {
 
 // heroAside data
 let heroAsideData = []
+let heroCount = 0
 
 axios.get(`http://localhost:${port}/api/hero/sort`)
-.then(resp => heroAsideData = resp.data)
+.then(resp => {
+    heroAsideData = resp.data
+    heroCount = resp.data.length
+})
+
+
+
+axios.get(`http://localhost:${port}/api/hero`)
+.then(resp => count = resp.data.length)
 
 
 
@@ -102,6 +111,7 @@ router.get('/heroes/:id', (req, res)=> {
             name: heroName,
             data: resp.data,
             asideData: heroAsideData,
+            count
         })
     })
 })

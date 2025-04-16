@@ -21,6 +21,20 @@
                 <img src="https://placehold.co/50x50" alt="placeholder img" class="img-fluid image" />
             </div>
             <div class="col-md-2">
+                <nav aria-label="navigation">
+                    <ul class="pagination">
+                        <% if (data.hero_id > 1) { %>
+                            <li class="page-item">
+                                <a href="/heroes/<%= data.hero_id - 1 %>" class="page-link">Prev</a>
+                            </li>
+                        <% } %>
+                        <% if (data.hero_id < count) { %>
+                            <li class="page-item">
+                                <a href="/heroes/<%= data.hero_id + 1 %>" class="page-link">Next</a>
+                            </li>
+                        <% } %>
+                    </ul>
+                </nav>
                 <%- include('../partials/heroAside') %>
             </div>
         </div>
