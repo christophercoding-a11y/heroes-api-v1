@@ -89,6 +89,27 @@ const heroDao = {
                 }
             }
         )
+    },
+
+    findHeroPowers: (res, table, id)=> {
+        con.query(
+            `select ${table}.hero_id, p.power
+            from ${table}
+            join hero_to_power hp on ${table}.hero_id = hp.hero_id
+            join power p on p.power_id = hp.power_id
+            where ${table}.hero_id = ${id};`,
+            (error, rows)=> {
+                if (!error) {
+                    if (rows.length === 1) {
+                        res.json(...rows)
+                    } else {
+                        res.json(rows)
+                    }
+                } else {
+                    console.log(`DAO ERROR: ${table}`, error)
+                }
+            }
+        )
     }
 }
 
