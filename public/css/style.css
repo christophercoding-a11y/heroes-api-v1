@@ -48,12 +48,28 @@ body {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.home-figure {
+    margin: 10px auto;
+    padding: 10px;
+    width: 100%;
+}
+
+.home-heading {
+    font-family: var(--f1);
+    font-size: xxx-large;
+}
+
+
 .nav-link {
     font-size: x-large;
 }
 
 .nav-link:hover {
     color: #E1D9D1;
+}
+
+.figure-caption {
+    font-size: large;
 }
 
 .card:hover {
