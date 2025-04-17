@@ -17,12 +17,13 @@ body {
     background: linear-gradient(135deg, #f1c40f, #e74c3c);
 }
 
-.header, .footer {
+.header {
     padding: 20px 0;
     background-color: #1b1f3b;
     font-family: var(--f1);
     text-shadow: 2px 2px 0 #000;
 }
+
 
 .card-title {
     font-size: calc(22px + (14 - 10) * ((100vw - 300px) / (1600 - 300)));
@@ -33,7 +34,7 @@ body {
 
 
 .colophon {
-    font-size: x-large;
+    font-size: large;
 }
 
 .card {
@@ -91,4 +92,12 @@ body {
     padding-top: 25px;
     padding-bottom: 60px; 
 }
+
+
+#allPowerMain, #FranchiseMain, #TeamMain, #SpeciesMain  {
+    padding: 70px 0;
+}
+
+
+
 

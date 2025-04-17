@@ -29,6 +29,7 @@ const heroDao = {
     findHeroById: (res, table, id)=> {
         // add powers ?? SUCCESS!!!!
         let powers = []
+        let rivals = []
         con.query(
             `SELECT ${table}.hero_id, p.power 
             FROM ${table}
@@ -41,31 +42,50 @@ const heroDao = {
                     Object.values(rows).forEach(obj => {
                         powers.push(obj.power)
                     })
+                    // write query for rivals
                     con.query(
-                        `SELECT h.hero_id, h.hero_name, h.first_name,
-                        h.last_name, h.alias, f.franchise, s.species, 
-                        h.place_of_origin, h.first_app, h.alignment, h.img_url
-                        FROM hero h 
-                        JOIN franchise f USING (franchise_id)
-                        JOIN species s USING (species_id)
-                        WHERE h.hero_id = ${id};`,
+                        `select h1.hero_name hero, h2.hero_name rival
+                        from hero_to_rival hr
+                        join hero h1 on h1.hero_id = hr.hero_id
+                        join hero h2 on h2.hero_id = hr.rival_id
+                        where h1.hero_id = ${id};`,
                         (error, rows) => {
-                        
-                            rows.forEach(row => {
-                                row.powers = powers
-                            })
                             if (!error) {
-                                if (rows.length === 1) {
-                                    res.json(...rows)
-                                } else {
-                                    res.json(rows)
-                                }
+                                Object.values(rows).forEach(obj => {
+                                    rivals.push(obj.rival)
+                                })
+                                con.query(
+                                    `SELECT h.hero_id, h.hero_name, h.first_name,
+                                    h.last_name, h.alias, f.franchise, s.species, 
+                                    h.place_of_origin, h.first_app, h.alignment, h.img_url
+                                    FROM hero h 
+                                    JOIN franchise f USING (franchise_id)
+                                    JOIN species s USING (species_id)
+                                    WHERE h.hero_id = ${id};`,
+                                    (error, rows) => {
+                                    
+                                        rows.forEach(row => {
+                                            row.powers = powers
+                                            row.rivals = rivals
+                                        })
+                                        if (!error) {
+                                            if (rows.length === 1) {
+                                                res.json(...rows)
+                                            } else {
+                                                res.json(rows)
+                                            }
+            
+                                        } else {
+                                            console.log(`DAO ERROR: ${table}`, error)
+                                        }
+                                    }
+                                )
 
-                            } else {
-                                console.log(`DAO ERROR: ${table}`, error)
                             }
                         }
+
                     )
+
 
                 } else {
                     console.log(error)

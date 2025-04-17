@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+
+<main class="main" id="FranchiseMain">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4">
+            <% data.forEach(item => { %>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h2 class="card-title card-heading">
+                                <%= item.franchise %>
+                            </h2>
+                        </div>
+                        <div class="card-footer">
+                            <p class="card-footer-text">
+                                See <a href="/franchise/fran/<%= item.franchise %>" class="card-footer-link">heroes</a> what franchise they in
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <%}) %>
+        </div>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>

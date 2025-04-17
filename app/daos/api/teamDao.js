@@ -1,7 +1,7 @@
 const con = require('../../config/dbconfig')
 
 const teamDao = {
-    table: 'franchise',
+    table: 'team',
     ...require('../daoCommon'),
     findHeroesByTeam: (res, table, team)=> {
         con.query(

@@ -7,7 +7,15 @@
                 <% if (data.alias != null) { %>
                     <h2 class="hero-single-h2 text-light">Alias: <%= data.alias %></h2>
                 <% } %>
-                <h2 class="hero-single-h2 text-light">Powers</h2>
+                <% if (data.first_name != null || data.last_name != null) { %>
+                    <p class="hero-name">
+                        <%= data.first_name %> <%= data.last_name %>
+                    </p>
+                <% } %>
+                <p class="species-text">Species: <%= data.species %></p>
+                <p class="origin-text">Place of origin : <%= data.place_of_origin %></p>
+                <p class="alignment-text">Alignment: <%= data.alignment %></p>
+                <h2 class="hero-single-h2">Powers</h2>
                 <ul class="list-group list-group-flush" id="heroPowersLists">
                     <% data.powers.forEach(heroPower => { %>
                         <li class="list-group-item">
@@ -19,6 +27,15 @@
             </div>
             <div class="col-md-7">
                 <img src="https://placehold.co/50x50" alt="placeholder img" class="img-fluid image" />
+                <div class="rivals-div d-flex mx-3">
+                    <% data.rivals.forEach(rival => { %>
+                        <figure class="figure rival-figure">
+                            <img src="https://placehold.co/80x80"alt="placeholder img" class="img-fluid image rival-figure-img" />
+                            <figcaption class="figcaption"><%=rival %></figcaption>
+                            
+                        </figure>
+                    <% }) %>
+                </div>
             </div>
             <div class="col-md-2">
                 <nav aria-label="navigation">
