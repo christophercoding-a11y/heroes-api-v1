@@ -14,11 +14,14 @@
 body {
     margin: 0;
     padding: 0;
-    background-color:  #1b1f3b;
+    background: linear-gradient(135deg, #f1c40f, #e74c3c);
 }
 
 .header, .footer {
     padding: 20px 0;
+    background-color: #1b1f3b;
+    font-family: var(--f1);
+    text-shadow: 2px 2px 0 #000;
 }
 
 .card-title {
@@ -27,24 +30,17 @@ body {
     letter-spacing: 1px;
 }
 
-.header {
-    background-color: #14162b;
-    font-family: var(--f1);
-}
 
-.footer {
-    background-color: #14162b;
-    padding: 20px 0;
+
+.colophon {
+    font-size: x-large;
 }
 
 .card {
-    /* background-color: #242849;  */
     margin: 10px;
     background-color: #fff;
-    color: #000;
+    color: #1b1f3b;
     border: 4px solid #000;
-    border-radius: 0;
-    box-shadow: 6px 6px 0 #e74c3c;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -62,6 +58,8 @@ body {
 
 .nav-link {
     font-size: x-large;
+    color: white;
+    text-shadow: 3px 3px 0 #000;
 }
 
 .nav-link:hover {
@@ -74,12 +72,23 @@ body {
 
 .card:hover {
     transform: translate(-5px, -5px);
-    box-shadow: 8px 8px 0 #e74c3c;
+    box-shadow: 5px 5px 0 #e74c3c;
 }
+
+.hero-list-link {
+    color: #000;
+    font-family: var(--f1);
+    font-size: x-large;
+}
+
+.hero-list-link:hover {
+    color: #e74c3c;
+}
+
 
 
 #heroMain {
     padding-top: 25px;
-    padding-bottom: 60px; /* or margin-top: 40px; */
+    padding-bottom: 60px; 
 }
 
