@@ -16,7 +16,7 @@ const powerDao = {
             order by h.hero_id;`,
             (error, rows) => {
                 if (!error) {
-                        res.json(rows)
+                    res.json(rows)
                 } else {
                     console.log(`DAO ERROR: ${table}`, error)
                 }
